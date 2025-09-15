@@ -1,5 +1,5 @@
 // 🔹 URL do WebApp (Google Apps Script publicado como Web App)
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxaDOTk_IPCPhutxklTpNnruJ6_X2tY1WVP042vKjC_nLLh2GWR8BZG6XYuYg1F9m6-/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw5qCiMgH9BYbqDBm4_dMQ4iox7almaYpvsArqjCh-xLrs2A85sgkmWCB6eEIN8LoVL/exec";
 
 // 🔹 Mapeamento dos departamentos
 const GROUPS = {
