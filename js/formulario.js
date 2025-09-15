@@ -68,22 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Script carregado");
 
   const qs = new URLSearchParams(window.location.search);
-  const token = qs.get("token")?.trim().toUpperCase() || "";
+  const contrato = qs.get("contrato")?.trim().toUpperCase();
+  const token = qs.get("token")?.trim().toUpperCase();
   console.log("🔑 Token recebido:", token);
+  console.log("📄 Contrato recebido:", contrato);
 
   const form = document.getElementById("nps-form");
   const statusBox = document.getElementById("status");
-
-  document.getElementById("token").value = token;
+  document.getElementById("token").value = token || contrato || "";
 
   const container = document.getElementById("perguntas-container");
 
-  // 🔹 Filtrar apenas projetos do responsável
-  const meusDepartamentos = Object.keys(RESPONSAVEIS).filter(
-    dep => RESPONSAVEIS[dep].toUpperCase() === token
-  );
+  let meusDepartamentos = [];
 
-  console.log("📋 Projetos do responsável:", meusDepartamentos);
+  if (contrato && GROUPS.hasOwnProperty(contrato)) {
+    meusDepartamentos = [contrato];
+  } else if (token) {
+    meusDepartamentos = Object.keys(RESPONSAVEIS).filter(
+      dep => RESPONSAVEIS[dep].toUpperCase() === token
+    );
+  }
+
+  if (meusDepartamentos.length === 0) {
+    container.innerHTML = `<p style="color: red;">❌ Nenhum projeto encontrado para esse parâmetro.</p>`;
+    return;
+  }
 
   meusDepartamentos.forEach(dep => {
     const depId = dep.replace(/\s+/g, "_").replace(/[|/]/g, "_");
@@ -116,35 +125,38 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(section);
   });
 
-  // 🔹 Envio do formulário
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    statusBox.textContent = "⏳ Enviando...";
-    statusBox.className = "";
+    statusBox.textContent = "";
+    statusBox.style.color = "black";
+    statusBox.textContent = "⏳ Enviando sua resposta...";
 
-    const fd = new FormData(form);
-    const body = new URLSearchParams();
-    for (const [k, v] of fd.entries()) body.append(k, v);
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
     try {
-      const res = await fetch(WEB_APP_URL, {
+      const response = await fetch(WEB_APP_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-        body: body.toString()
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
       });
 
-      const data = await res.json();
-      if (data.ok) {
-        statusBox.textContent = "✅ Respostas enviadas com sucesso!";
-        statusBox.className = "success";
+      if (response.ok) {
+        statusBox.style.color = "green";
+        statusBox.textContent = "✅ Obrigado por responder! Sua opinião é muito importante para nós.";
         form.reset();
       } else {
-        statusBox.textContent = "⚠️ Erro: " + data.error;
-        statusBox.className = "error";
+        throw new Error(`Erro no envio: ${response.statusText}`);
       }
-    } catch (err) {
-      statusBox.textContent = "❌ Falha ao enviar: " + err.message;
-      statusBox.className = "error";
+    } catch (error) {
+      console.error("❌ Erro ao enviar o formulário:", error);
+      statusBox.style.color = "red";
+      statusBox.textContent = "❌ Ocorreu um erro ao enviar sua resposta. Por favor, tente novamente mais tarde.";
     }
   });
 });
