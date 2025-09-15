@@ -1,4 +1,5 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyBV3Qiy3zChmr3rq1PjmShWkFgdThLvguPL03EyKZ2pVo92StMAiTyj4y_MEvizhUe/exec";
+// 🔹 URL do WebApp (Google Apps Script publicado como Web App)
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx5WzcXXYPr3mv7iX3c4YbM5sIECcOTEgoaUx2jmDMtZ0mtjgOOjVq9OFg5yUxdEREd/exec";
 
 // 🔹 Mapeamento dos departamentos
 const GROUPS = {
@@ -76,17 +77,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("token").value = token;
 
   const container = document.getElementById("perguntas-container");
-  const outrosDepartamentos = Object.keys(GROUPS).filter(dep => dep !== token);
-  console.log("📋 Departamentos a avaliar:", outrosDepartamentos);
 
-  outrosDepartamentos.forEach(dep => {
+  // 🔹 Filtrar apenas projetos do responsável
+  const meusDepartamentos = Object.keys(RESPONSAVEIS).filter(
+    dep => RESPONSAVEIS[dep].toUpperCase() === token
+  );
+
+  console.log("📋 Projetos do responsável:", meusDepartamentos);
+
+  meusDepartamentos.forEach(dep => {
     const depId = dep.replace(/\s+/g, "_").replace(/[|/]/g, "_");
     const nomeDepartamento = GROUPS[dep] || dep;
     const responsavel = RESPONSAVEIS[dep] || "Responsável não definido";
 
     const section = document.createElement("section");
     section.innerHTML = `
-      <h2 style="font-size: 1.5rem; color: #050505ff; margin-bottom: 0.5rem;">${nomeDepartamento}</h2>
+      <h2 style="font-size: 1.5rem; color: #050505; margin-bottom: 0.5rem;">${nomeDepartamento}</h2>
       <p style="margin-bottom: 1rem; font-weight: 500; color: #444;">Responsável: <strong>${responsavel}</strong></p>
 
       <label style="font-weight: 600;">1. Em uma escala de 0 a 10, qual seu nível de satisfação com o <strong>${nomeDepartamento}</strong>?</label>
@@ -94,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ${Array.from({ length: 11 }, (_, i) => `
           <label style="flex: 1 0 8%; text-align: center; font-size: 0.9rem;">
             ${i}<br>
-            <input type="radio" name="nps_${depId}" value="${i}" ${i === 0 ? 'required' : ''}>
+            <input type="radio" name="nps_${depId}" value="${i}" ${i === 0 ? "required" : ""}>
           </label>
         `).join("")}
       </div>
@@ -110,38 +116,36 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(section);
   });
 
+  // 🔹 Envio do formulário
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    statusBox.textContent = "Enviando...";
+    statusBox.textContent = "⏳ Enviando...";
     statusBox.className = "";
 
     const fd = new FormData(form);
-    const body = new URLSearchParams(fd);
+    const body = new URLSearchParams();
+    for (const [k, v] of fd.entries()) body.append(k, v);
 
     try {
       const res = await fetch(WEB_APP_URL, {
         method: "POST",
-        body: body.toString(),
-        headers: { 
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        }
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: body.toString()
       });
 
-      if (!res.ok) {
-        throw new Error(`Erro HTTP: ${res.status}`);
+      const data = await res.json();
+      if (data.ok) {
+        statusBox.textContent = "✅ Respostas enviadas com sucesso!";
+        statusBox.className = "success";
+        form.reset();
+      } else {
+        statusBox.textContent = "⚠️ Erro: " + data.error;
+        statusBox.className = "error";
       }
-
-      const data = await res.json().catch(() => null);
-      console.log("✅ Resposta recebida:", data);
-
-      statusBox.textContent = "✔️ Formulário enviado com sucesso!";
-      statusBox.className = "success";
-      form.reset();
     } catch (err) {
-      console.error("❌ Erro ao enviar:", err);
-      statusBox.textContent = "Erro ao enviar. Tente novamente.";
+      statusBox.textContent = "❌ Falha ao enviar: " + err.message;
       statusBox.className = "error";
     }
   });
 });
+
