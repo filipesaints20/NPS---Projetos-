@@ -3,50 +3,45 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw5qCiMgH9BYbqDBm4_
 
 // 🔹 Mapeamento dos departamentos
 const GROUPS = {
-  "PC 305": "305 - SERVIÇOS COMERCIAIS METROPOLITANA SUL", // Fica
-  "PC 306": "306 - SERVIÇOS COMERCIAIS CONTAGEM", // Fica
-  "PC 307": "307 - SERVIÇOS COMERCIAIS DIVINOPOLIS", //Fica
-  "PC 321": "321 - PERFORMANCE COLOMBO", // Fica
-  "PC 322": "322 - PERFORMANCE METROPOLITANA", //Fica
-  "PC 348": "348 - GLOBAL PIMENTAS", //Fica
-  "PC 357": "357 - CARTOGRAFIA RMR", //Fica
-  "PC 360": "360 - DV GUARULHOS", // Fica
-  "PC 363": "363 - FIDIC YELLOW", // Fica
-  "PC 367": "367 - PERFORMANCE CAMPINA GRANDE", //Fica
-  "PC 372": "372 - CALIBRAÇÃO DE MACROMEDIDOR RMSP", //Fica
-  "PC 373": "373 - PROJETO OBRAS ESTRUTURAIS BENEDITO BENTES", // Fica
-  "PC 377": "377 - SERVIÇOS COMERCIAIS RIBEIRÃO PRETO", //Fica
-  "PC 383": "383 - PERFORMANCE SANEPAR LESTE", // Fica
-  "PC 384": "384 - IGUÁ PARADA GUANDÚ", // Fica
-  "PC 385": "385 - SANEPAR LOTE 2", // Fica
-  "PC 387": "387 - DV MARINGÁ II", // Fica
-  "PC 388": "388 - AGANOVA SANEPAR", // Fica
-  "PC 389": "389 - CONSÓRCIO INTEGRA 2C", //Fica
-  "PC 390": "390 - DV SAMAE SBS", // Fica
-  "PC 391": "391 - JICA COMISSIONAMENTO DE DMCs", // Fica
-  "PC 392": "392 - DV EXTREMO NORTE II", // Fica
-  "PC 393": "393 - LEVANTAMENTO DE PERFIL DE CONSUMO", //Fica
-  "PC 394": "394 - SANEPAR CALIBRAÇÃO", // Fica
-  "PC 395": "395 - OPERAÇÃO REMOTA MOOCA", //Fica
-  "PC 396": "396 - PERDAS SÃO BERNARDO"// Fica
+  "PC 305": "305 - SERVIÇOS COMERCIAIS METROPOLITANA SUL",
+  "PC 306": "306 - SERVIÇOS COMERCIAIS CONTAGEM",
+  "PC 307": "307 - SERVIÇOS COMERCIAIS DIVINOPOLIS",
+  "PC 321": "321 - PERFORMANCE COLOMBO",
+  "PC 322": "322 - PERFORMANCE METROPOLITANA",
+  "PC 348": "348 - GLOBAL PIMENTAS",
+  "PC 357": "357 - CARTOGRAFIA RMR",
+  "PC 360": "360 - DV GUARULHOS",
+  "PC 363": "363 - FIDIC YELLOW",
+  "PC 367": "367 - PERFORMANCE CAMPINA GRANDE",
+  "PC 372": "372 - CALIBRAÇÃO DE MACROMEDIDOR RMSP",
+  "PC 373": "373 - PROJETO OBRAS ESTRUTURAIS BENEDITO BENTES",
+  "PC 377": "377 - SERVIÇOS COMERCIAIS RIBEIRÃO PRETO",
+  "PC 383": "383 - PERFORMANCE SANEPAR LESTE",
+  "PC 384": "384 - IGUÁ PARADA GUANDÚ",
+  "PC 385": "385 - SANEPAR LOTE 2",
+  "PC 387": "387 - DV MARINGÁ II",
+  "PC 388": "388 - AGANOVA SANEPAR",
+  "PC 389": "389 - CONSÓRCIO INTEGRA 2C",
+  "PC 390": "390 - DV SAMAE SBS",
+  "PC 391": "391 - JICA COMISSIONAMENTO DE DMCs",
+  "PC 392": "392 - DV EXTREMO NORTE II",
+  "PC 393": "393 - LEVANTAMENTO DE PERFIL DE CONSUMO",
+  "PC 394": "394 - SANEPAR CALIBRAÇÃO",
+  "PC 395": "395 - OPERAÇÃO REMOTA MOOCA",
+  "PC 396": "396 - PERDAS SÃO BERNARDO"
 };
 
 // 🔹 Mapeamento dos responsáveis
 const RESPONSAVEIS = {
-  "PC 261": "EMANUEL", "PC 289": "EMANUEL", "PC 298": "EMANUEL",
-  "PC 304": "JAMILLE", "PC 305": "EMANUEL", "PC 306": "EMANUEL",
-  "PC 307": "EMANUEL", "PC 312": "MARIA CONCEIÇÃO", "PC 321": "JAMILLE",
-  "PC 322": "MARIA CONCEIÇÃO", "PC 323": "EMANUEL", "PC 324": "EMANUEL",
-  "PC 325": "EMANUEL", "PC 338": "EMANUEL", "PC 348": "EMANUEL",
-  "PC 354": "EMANUEL", "PC 357": "MARIA CONCEIÇÃO", "PC 360": "ALESSANDRO",
-  "PC 363": "MARIA CONCEIÇÃO", "PC 364": "EMANUEL", "PC 367": "MARIA CONCEIÇÃO",
-  "PC 372": "ALESSANDRO", "PC 373": "GUSTAVO", "PC 377": "EMANUEL",
-  "PC 379": "FLAVIO", "PC 381": "GUSTAVO", "PC 382": "FLAVIO",
-  "PC 383": "JAMILLE", "PC 384": "FLAVIO", "PC 385": "JAMILLE",
-  "PC 386": "JAMILLE", "PC 387": "ALESSANDRO", "PC 388": "ALESSANDRO",
-  "PC 389": "RAFAEL", "PC 390": "ALESSANDRO", "PC 391": "FERNANDA",
-  "PC 392": "ALESSANDRO", "PC 393": "GUSTAVO", "PC 394": "ALESSANDRO",
-  "PC 395": "SILVIO", "PC 396": "FERNANDA"
+  "PC 305": "EMANUEL", "PC 306": "EMANUEL", "PC 307": "EMANUEL",
+  "PC 321": "JAMILLE", "PC 322": "MARIA CONCEIÇÃO",
+  "PC 348": "EMANUEL", "PC 357": "MARIA CONCEIÇÃO", "PC 360": "ALESSANDRO",
+  "PC 363": "MARIA CONCEIÇÃO", "PC 367": "MARIA CONCEIÇÃO", "PC 372": "ALESSANDRO",
+  "PC 373": "GUSTAVO", "PC 377": "EMANUEL", "PC 383": "JAMILLE",
+  "PC 384": "FLAVIO", "PC 385": "JAMILLE", "PC 387": "ALESSANDRO",
+  "PC 388": "ALESSANDRO", "PC 389": "RAFAEL", "PC 390": "ALESSANDRO",
+  "PC 391": "FERNANDA", "PC 392": "ALESSANDRO", "PC 393": "GUSTAVO",
+  "PC 394": "ALESSANDRO", "PC 395": "SILVIO", "PC 396": "FERNANDA"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -89,12 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2 style="font-size: 1.5rem; color: #050505; margin-bottom: 0.5rem;">${nomeDepartamento}</h2>
       <p style="margin-bottom: 1rem; font-weight: 500; color: #444;">Responsável: <strong>${responsavel}</strong></p>
 
-      <label style="font-weight: 600;">1. Em uma escala de 0 a 10, qual seu nível de satisfação com Effico Saneamento, no tocante a gestão do projeto <strong>${nomeDepartamento}</strong>?</label>
+      <label style="font-weight: 600;">1. Em uma escala de 0 a 10, qual seu nível de satisfação com Effico Saneamento, no tocante à gestão do projeto <strong>${nomeDepartamento}</strong>?</label>
       <div class="nps-scale" style="display: flex; flex-wrap: wrap; justify-content: space-between; margin: 1rem 0;">
         ${Array.from({ length: 11 }, (_, i) => `
           <label style="flex: 1 0 8%; text-align: center; font-size: 0.9rem;">
             ${i}<br>
-            <input type="radio" name="nps_${depId}" value="${i}" ${i === 0 ? "required" : ""}>
+            <input type="radio" name="nps_${depId}" value="${i}" required>
           </label>
         `).join("")}
       </div>
@@ -112,36 +107,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    statusBox.textContent = "";
-    statusBox.style.color = "black";
     statusBox.textContent = "⏳ Enviando sua resposta...";
+    statusBox.style.color = "black";
 
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
+    const fd = new FormData(form);
+    const body = new URLSearchParams();
+    for (const [key, value] of fd.entries()) {
+      body.append(key, value);
+    }
 
     try {
-      const response = await fetch(WEB_APP_URL, {
+      const res = await fetch(WEB_APP_URL, {
         method: "POST",
-        body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: body.toString()
       });
 
-      if (response.ok) {
+      const result = await res.json();
+      if (result.ok) {
         statusBox.style.color = "green";
         statusBox.textContent = "✅ Obrigado por responder! Sua opinião é muito importante para nós.";
         form.reset();
       } else {
-        throw new Error(`Erro no envio: ${response.statusText}`);
+        throw new Error(result.error || "Erro desconhecido");
       }
-    } catch (error) {
-      console.error("❌ Erro ao enviar o formulário:", error);
+    } catch (err) {
+      console.error("❌ Erro ao enviar:", err);
       statusBox.style.color = "red";
-      statusBox.textContent = "❌ Ocorreu um erro ao enviar sua resposta. Por favor, tente novamente mais tarde.";
+      statusBox.textContent = "❌ Ocorreu um erro ao enviar sua resposta. Por favor, tente novamente.";
     }
   });
 });
