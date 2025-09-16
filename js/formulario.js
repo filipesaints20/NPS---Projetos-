@@ -3,47 +3,32 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw5qCiMgH9BYbqDBm4_
 
 // 🔹 Mapeamento dos departamentos
 const GROUPS = {
-  "PC 261": "CONSÓRCIO EFICIÊNCIA UBATUBA BZ-P19",
-  "PC 289": "JICA SÃO VICENTE",
-  "PC 298": "MONITORA CENTRO",
-  "PC 304": "PERFORMANCE SUMARÉ",
-  "PC 305": "SERVIÇOS COMERCIAIS METROPOLITANA SUL",
-  "PC 306": "SERVIÇOS COMERCIAIS CONTAGEM",
-  "PC 307": "SERVIÇOS COMERCIAIS DIVINOPOLIS",
-  "PC 312": "PERFORMANCE JOÃO PESSOA",
-  "PC 321": "PERFORMANCE COLOMBO",
-  "PC 322": "PERFORMANCE METROPOLITANA",
-  "PC 323": "DV MOOCA",
-  "PC 324": "PERFORMANCE EXTREMO NORTE",
-  "PC 325": "CONSÓRCIO SUSTENTABILIDADE OESTE",
-  "PC 338": "PERFORMANCE BARUERI",
-  "PC 348": "GLOBAL PIMENTAS",
-  "PC 354": "PROJETO IFC-COPANOR",
-  "PC 357": "CARTOGRAFIA RMR",
-  "PC 360": "DV GUARULHOS",
-  "PC 363": "FIDIC YELLOW",
-  "PC 364": "INSPEÇÃO DE ESGOTOS METROPOLITANA",
-  "PC 367": "PERFORMANCE CAMPINA GRANDE",
-  "PC 372": "CALIBRAÇÃO DE MACROMEDIDOR RMSP",
-  "PC 373": "PROJETO OBRAS ESTRUTURAIS BENEDITO BENTES",
-  "PC 377": "SERVIÇOS COMERCIAIS RIBEIRÃO PRETO",
-  "PC 379": "SETORIZAÇÃO RJ LOTES 1 E 2",
-  "PC 381": "AFERIÇÃO MACRO BRK ALAGOAS RMM",
-  "PC 382": "AESAN IMPLANTAÇÃO DE MACROS E VÁLVULAS",
-  "PC 383": "PERFORMANCE SANEPAR LESTE",
-  "PC 384": "IGUÁ PARADA GUANDÚ",
-  "PC 385": "SANEPAR LOTE 2",
-  "PC 386": "DV AEGEA RJ",
-  "PC 387": "DV MARINGÁ II",
-  "PC 388": "AGANOVA SANEPAR",
-  "PC 389": "CONSÓRCIO INTEGRA 2C",
-  "PC 390": "DV SAMAE SBS",
-  "PC 391": "JICA COMISSIONAMENTO DE DMCs",
-  "PC 392": "DV EXTREMO NORTE II",
-  "PC 393": "LEVANTAMENTO DE PERFIL DE CONSUMO",
-  "PC 394": "SANEPAR CALIBRAÇÃO",
-  "PC 395": "OPERAÇÃO REMOTA MOOCA",
-  "PC 396": "PERDAS SÃO BERNARDO"
+  "PC 305": "305 - SERVIÇOS COMERCIAIS METROPOLITANA SUL", // Fica
+  "PC 306": "306 - SERVIÇOS COMERCIAIS CONTAGEM", // Fica
+  "PC 307": "307 - SERVIÇOS COMERCIAIS DIVINOPOLIS", //Fica
+  "PC 321": "321 - PERFORMANCE COLOMBO", // Fica
+  "PC 322": "322 - PERFORMANCE METROPOLITANA", //Fica
+  "PC 348": "348 - GLOBAL PIMENTAS", //Fica
+  "PC 357": "357 - CARTOGRAFIA RMR", //Fica
+  "PC 360": "360 - DV GUARULHOS", // Fica
+  "PC 363": "363 - FIDIC YELLOW", // Fica
+  "PC 367": "367 - PERFORMANCE CAMPINA GRANDE", //Fica
+  "PC 372": "372 - CALIBRAÇÃO DE MACROMEDIDOR RMSP", //Fica
+  "PC 373": "373 - PROJETO OBRAS ESTRUTURAIS BENEDITO BENTES", // Fica
+  "PC 377": "377 - SERVIÇOS COMERCIAIS RIBEIRÃO PRETO", //Fica
+  "PC 383": "383 - PERFORMANCE SANEPAR LESTE", // Fica
+  "PC 384": "384 - IGUÁ PARADA GUANDÚ", // Fica
+  "PC 385": "385 - SANEPAR LOTE 2", // Fica
+  "PC 387": "387 - DV MARINGÁ II", // Fica
+  "PC 388": "388 - AGANOVA SANEPAR", // Fica
+  "PC 389": "389 - CONSÓRCIO INTEGRA 2C", //Fica
+  "PC 390": "390 - DV SAMAE SBS", // Fica
+  "PC 391": "391 - JICA COMISSIONAMENTO DE DMCs", // Fica
+  "PC 392": "392 - DV EXTREMO NORTE II", // Fica
+  "PC 393": "393 - LEVANTAMENTO DE PERFIL DE CONSUMO", //Fica
+  "PC 394": "394 - SANEPAR CALIBRAÇÃO", // Fica
+  "PC 395": "395 - OPERAÇÃO REMOTA MOOCA", //Fica
+  "PC 396": "396 - PERDAS SÃO BERNARDO"// Fica
 };
 
 // 🔹 Mapeamento dos responsáveis
@@ -104,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2 style="font-size: 1.5rem; color: #050505; margin-bottom: 0.5rem;">${nomeDepartamento}</h2>
       <p style="margin-bottom: 1rem; font-weight: 500; color: #444;">Responsável: <strong>${responsavel}</strong></p>
 
-      <label style="font-weight: 600;">1. Em uma escala de 0 a 10, qual seu nível de satisfação com o <strong>${nomeDepartamento}</strong>?</label>
+      <label style="font-weight: 600;">1. Em uma escala de 0 a 10, qual seu nível de satisfação com Effico Saneamento, no tocante a gestão do projeto <strong>${nomeDepartamento}</strong>?</label>
       <div class="nps-scale" style="display: flex; flex-wrap: wrap; justify-content: space-between; margin: 1rem 0;">
         ${Array.from({ length: 11 }, (_, i) => `
           <label style="flex: 1 0 8%; text-align: center; font-size: 0.9rem;">
